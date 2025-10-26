@@ -1,0 +1,6 @@
+{
+  "files.associations": {
+    "task_sensores.h": "c",
+    "task_alimentacao.h": "c"
+  }
+}
