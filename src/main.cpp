@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include "task_alimentacao.h"
 #include "task_sensores.h"
+#include "servo_driver.h"
 
 char slot;
 unsigned long tempo = 0;
@@ -11,6 +12,7 @@ void AguardaTimer();
 
 void setup()
 {
+  Servo_Init();
   TaskAlimentacao_Init();
   TaskSensores_Init();
 }

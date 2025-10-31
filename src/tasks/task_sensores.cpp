@@ -19,7 +19,7 @@ static void TaskSensores(void *pvParameters)
         sensores.passagem_tampa = Leitura_Sensor(SENSOR_PASSAGEM_TAMPA);
         sensores.final_esteira = Leitura_Sensor(SENSOR_FINAL_ESTEIRA);
         sensores.chegada_guia_recrave = Leitura_Sensor(SENSOR_CHEGADA_GUIA_RECRAVE);
-        bool leitura_atual = !Leitura_Sensor(BOTAO_START);
+        bool leitura_atual = Leitura_Sensor(BOTAO_START);
 
         if (leitura_atual != ultimo_estado_botao)
         {

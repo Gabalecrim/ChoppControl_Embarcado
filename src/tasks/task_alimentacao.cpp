@@ -2,11 +2,12 @@
 #include <Arduino.h>
 #include <freertos/FreeRTOS.h>
 #include <freertos/task.h>
+#include "servo_driver.h"
 
 void TaskAlimentacao_Init(void)
 {
     Serial.begin(115200);
-    xTaskCreatePinnedToCore(task_alimentacao, "Alimentacao", 2048, NULL, 5, NULL, 1);
+    xTaskCreatePinnedToCore(task_alimentacao, "Alimentacao", 2048, NULL, 5, NULL, 0);
 }
 
 void task_alimentacao(void *pvParameters)
@@ -17,11 +18,13 @@ void task_alimentacao(void *pvParameters)
         if (sensores->start_processo)
         {
             Serial.println("Alimentacao ligada");
+            Aciona_Servo(ATUADOR_GUIA_RECRAVE, 180);
         }
         else
         {
             Serial.println("Alimentacao desligada");
+            Aciona_Servo(ATUADOR_FINAL_ESTEIRA, 0);
         }
-        vTaskDelay(pdMS_TO_TICKS(20));
+        vTaskDelay(1000 / portTICK_PERIOD_MS);
     }
 }

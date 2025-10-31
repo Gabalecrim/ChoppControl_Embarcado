@@ -240,6 +240,13 @@
       "top": -230.4,
       "left": 230.4,
       "attrs": { "text": "Iniciar Processo Automatico" }
+    },
+    {
+      "type": "wokwi-servo",
+      "id": "servo1",
+      "top": -251.6,
+      "left": 729.6,
+      "attrs": {}
     }
   ],
   "connections": [
@@ -291,7 +298,7 @@
       "black",
       ["v9.6", "h-47.6", "v268.8", "h451.2", "v-220.8"]
     ],
-    ["btn1:2.r", "esp:5V", "red", ["h135.2", "v307.6", "h-422.55"]],
+    ["btn1:2.r", "esp:5V", "red", ["h116", "v307.6", "h-403.35"]],
     ["btn5:2.r", "esp:5V", "red", ["h10.4", "v77.2", "h-297.75"]],
     ["btn4:2.r", "esp:5V", "red", ["h48.8", "v134.8", "h-336.15"]],
     ["btn3:2.r", "esp:5V", "red", ["h77.6", "v192.4", "h-364.95"]],
@@ -302,7 +309,10 @@
     ["esp:17", "btn4:1.l", "blue", ["h96", "v115.2"]],
     ["esp:5", "btn3:1.l", "blue", ["h105.6", "v57.6"]],
     ["btn6:2.r", "esp:23", "blue", ["h58.4", "v86.8"]],
-    ["esp:3V3", "btn6:1.l", "red", ["h-19.05", "v-96"]]
+    ["btn6:1.l", "esp:GND.2", "black", ["h-19.2", "v57.6", "h86.4"]],
+    ["esp:GND.2", "servo1:GND", "black", ["v0"]],
+    ["esp:19", "servo1:PWM", "green", ["h57.6", "v-163.4"]],
+    ["esp:5V", "servo1:V+", "red", ["h0.15", "v172.8", "h422.4", "v-451.3"]]
   ],
   "dependencies": {}
 }

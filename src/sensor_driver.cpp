@@ -14,11 +14,16 @@ void Sensor_Init(void)
 {
     for (int i = 0; i < SENSOR_COUNT; i++)
     {
-        pinMode(sensor_pins[i], INPUT_PULLUP);
+        pinMode(sensor_pins[i], INPUT_PULLDOWN);
     }
+    Serial.begin(115200);
 }
 
 bool Leitura_Sensor(SensorID id)
 {
+    if (sensor_pins[id] == BOTAO_START)
+    {
+        Serial.println(digitalRead(sensor_pins[id]));
+    }
     return digitalRead(sensor_pins[id]);
 }

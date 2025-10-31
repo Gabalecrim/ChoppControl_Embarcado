@@ -8,4 +8,8 @@ typedef enum
     SERVO_COUNT
 } ServoID;
 
+void Servo_Init(void);
+
+void Aciona_Servo(ServoID id, float angulo);
+
 #endif
