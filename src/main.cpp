@@ -1,6 +1,6 @@
 #include <Arduino.h>
 #include "task_alimentacao.h"
-#include "task_sensores.h"
+#include "task_leitura.h"
 #include "servo_driver.h"
 
 char slot;

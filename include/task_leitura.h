@@ -12,11 +12,12 @@ typedef enum
     SENSOR_PASSAGEM_TAMPA,
     SENSOR_FINAL_ESTEIRA,
     SENSOR_CHEGADA_GUIA_RECRAVE,
-    BOTAO_START,
     SENSOR_COUNT
 } SensorID;
 
 void TaskSensores_Init(void);
+
+void TaskSensores(void *pvParameters);
 
 EstadoSensor_t *Sensores_GetData(void);
 

@@ -3,7 +3,7 @@
 
 #include <stdbool.h>
 #include "driver/gpio.h"
-#include "task_sensores.h"
+#include "task_leitura.h"
 
 void Sensor_Init(void);
 

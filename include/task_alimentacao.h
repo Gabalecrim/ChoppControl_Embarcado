@@ -6,7 +6,7 @@
 #include "freertos/semphr.h"
 #include "driver/gpio.h"
 #include "esp_log.h"
-#include "task_sensores.h"
+#include "task_leitura.h"
 
 void TaskAlimentacao_Init(void);
 
