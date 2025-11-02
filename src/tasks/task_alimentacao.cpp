@@ -23,7 +23,7 @@ void task_alimentacao(void *pvParameters)
         else
         {
             Serial.println("Alimentacao desligada");
-            Aciona_Servo(ATUADOR_FINAL_ESTEIRA, 0);
+            Aciona_Servo(ATUADOR_GUIA_RECRAVE, 0);
         }
         vTaskDelay(1000 / portTICK_PERIOD_MS);
     }

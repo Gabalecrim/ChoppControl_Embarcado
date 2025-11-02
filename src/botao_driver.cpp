@@ -1,5 +1,7 @@
 #include "botao_driver.h"
 #include "estado_comum.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
 #include <Arduino.h>
 
 static const gpio_num_t botao_pins[BOTAO_COUNT] = {
@@ -10,43 +12,40 @@ static EstadoBotao_t botoes[BOTAO_COUNT] = {
     {BOTAO_START, false},
 };
 
+static Debounce_t debounce[BOTAO_COUNT];
+static const TickType_t debounce_delay = pdMS_TO_TICKS(50);
+
 void Botao_Init(void)
 {
     for (int i = 0; i < BOTAO_COUNT; i++)
     {
         pinMode(botao_pins[i], INPUT_PULLDOWN);
+        debounce[i].estado_estavel = false;
+        debounce[i].ultimo_leitura = false;
+        debounce[i].ultimo_tempo = xTaskGetTickCount();
     }
     Serial.begin(115200);
 }
 
 bool Leitura_Botao(BotaoID id)
 {
-    bool ultimo_estado_botao = false;
-    TickType_t ultimo_tempo_mudanca = 0;
-    const TickType_t debounce_delay = pdMS_TO_TICKS(50);
-
     bool leitura_atual = !digitalRead(botao_pins[id]);
-    // Serial.println(leitura_atual);
+    TickType_t agora = xTaskGetTickCount();
 
-    if (leitura_atual != ultimo_estado_botao)
+    if (leitura_atual != debounce[id].ultimo_leitura)
     {
-        botoes[id].estado = !botoes[id].estado;
-        // Serial.println("Botao pressionado");
-
-        // ultimo_tempo_mudanca = xTaskGetTickCount();
-        ultimo_estado_botao = leitura_atual;
+        debounce[id].ultimo_tempo = agora;
+        debounce[id].ultimo_leitura = leitura_atual;
     }
 
-    // if (leitura_atual && (xTaskGetTickCount() - ultimo_tempo_mudanca) > debounce_delay)
-    // {
-    //     botoes[id].estado = !botoes[id].estado;
-    //     Serial.println("Botao pressionado");
+    if (leitura_atual && (xTaskGetTickCount() - debounce[id].ultimo_tempo) > debounce_delay)
+    {
+        botoes[id].estado = !botoes[id].estado;
 
-    //     while (!digitalRead(botao_pins[id]))
-    //     {
-    //         vTaskDelay(pdMS_TO_TICKS(10));
-    //     }
-    // }
-
+        while (!digitalRead(botao_pins[id]))
+        {
+            vTaskDelay(pdMS_TO_TICKS(10));
+        }
+    }
     return botoes[id].estado;
 }
