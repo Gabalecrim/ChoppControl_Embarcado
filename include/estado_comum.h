@@ -1,6 +1,9 @@
 #ifndef estado_comum_h
 #define estado_comum_h
 
+#include <freertos/FreeRTOS.h>
+#include <freertos/semphr.h>
+
 typedef enum
 {
     AGUARDANDO,
@@ -16,7 +19,14 @@ typedef struct
     bool passagem_tampa;
     bool final_esteira;
     bool chegada_guia_recrave;
-    bool start_processo;
+    bool botao_ciclo;
 } EstadoSensor_t;
+
+extern SemaphoreHandle_t xSemAlimentacao;
+extern SemaphoreHandle_t xSemEnvase;
+extern SemaphoreHandle_t xSemTampa;
+extern SemaphoreHandle_t xSemEsteira;
+extern SemaphoreHandle_t xSemRecrave;
+extern SemaphoreHandle_t xMutexSensores;
 
 #endif
