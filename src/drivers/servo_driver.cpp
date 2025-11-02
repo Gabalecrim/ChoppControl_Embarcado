@@ -1,4 +1,4 @@
-#include "servo_driver.h"
+#include "drivers/servo_driver.h"
 #include <Arduino.h>
 
 static const gpio_num_t servo_pin[SERVO_COUNT] = {

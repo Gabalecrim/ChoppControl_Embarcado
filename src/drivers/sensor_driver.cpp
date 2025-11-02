@@ -1,4 +1,4 @@
-#include "sensor_driver.h"
+#include "drivers/sensor_driver.h"
 #include <Arduino.h>
 
 static const gpio_num_t sensor_pins[SENSOR_COUNT] = {

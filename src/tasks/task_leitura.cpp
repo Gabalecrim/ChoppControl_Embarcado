@@ -1,14 +1,13 @@
-#include "task_leitura.h"
+#include "tasks/task_leitura.h"
 #include "freertos/FreeRTOS.h"
 #include "freertos/task.h"
 #include "freertos/semphr.h"
-#include "sensor_driver.h"
-#include "botao_driver.h"
+#include "drivers/sensor_driver.h"
+#include "drivers/botao_driver.h"
 
 static EstadoSensor_t estado_leitura;
 static EstadoSensor_t ultima_leitura;
 
-SemaphoreHandle_t xSemAlimentacao;
 SemaphoreHandle_t xSemAlimentacao;
 
 void TaskSensores_Init(void)

@@ -1,4 +1,4 @@
-#include "ponteh_driver.h"
+#include "drivers/ponteh_driver.h"
 #include <Arduino.h>
 
 static const gpio_num_t motor_pin[MOTOR_COUNT] = {

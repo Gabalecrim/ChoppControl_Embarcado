@@ -1,9 +1,9 @@
-#include "task_alimentacao.h"
+#include "tasks/task_alimentacao.h"
 #include <Arduino.h>
 #include <freertos/FreeRTOS.h>
 #include <freertos/semphr.h>
 #include <freertos/task.h>
-#include "servo_driver.h"
+#include "drivers/servo_driver.h"
 
 void TaskAlimentacao_Init(void)
 {

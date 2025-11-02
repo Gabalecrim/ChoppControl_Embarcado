@@ -1,7 +1,7 @@
 #include <Arduino.h>
-#include "task_alimentacao.h"
-#include "task_leitura.h"
-#include "servo_driver.h"
+#include "tasks/task_alimentacao.h"
+#include "tasks/task_leitura.h"
+#include "drivers/servo_driver.h"
 
 char slot;
 unsigned long tempo = 0;
