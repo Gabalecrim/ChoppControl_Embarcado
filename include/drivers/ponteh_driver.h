@@ -11,6 +11,6 @@ typedef enum
 
 void Motor_Init(void);
 
-bool Aciona_Motor(void);
+void Aciona_Motor(MotorID id, float potencia);
 
 #endif

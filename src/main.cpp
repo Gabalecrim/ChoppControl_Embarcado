@@ -2,6 +2,7 @@
 #include "tasks/task_alimentacao.h"
 #include "tasks/task_leitura.h"
 #include "drivers/servo_driver.h"
+#include "drivers/ponteh_driver.h"
 
 char slot;
 unsigned long tempo = 0;
@@ -12,6 +13,7 @@ void AguardaTimer();
 
 void setup()
 {
+  Motor_Init();
   Servo_Init();
   TaskAlimentacao_Init();
   TaskSensores_Init();

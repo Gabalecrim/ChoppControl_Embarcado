@@ -3,7 +3,7 @@
 #include <freertos/FreeRTOS.h>
 #include <freertos/semphr.h>
 #include <freertos/task.h>
-#include "drivers/servo_driver.h"
+#include "drivers/ponteh_driver.h"
 
 void TaskAlimentacao_Init(void)
 {
@@ -21,15 +21,15 @@ void task_alimentacao(void *pvParameters)
             if (sensores->botao_ciclo)
             {
                 Serial.println("Alimentacao ligada");
-                Aciona_Servo(ATUADOR_GUIA_RECRAVE, 180);
+                Aciona_Motor(MOTOR_ALIMENTACAO, 255);
             }
             else
             {
                 Serial.println("Alimentacao desligada");
-                Aciona_Servo(ATUADOR_GUIA_RECRAVE, 0);
+                Aciona_Motor(MOTOR_ALIMENTACAO, 0);
             }
         }
-
-        vTaskDelay(500 / portTICK_PERIOD_MS);
     }
+
+    vTaskDelay(5 / portTICK_PERIOD_MS);
 }
