@@ -3,8 +3,8 @@
 #include <freertos/FreeRTOS.h>
 
 static const gpio_num_t motor_pins[MOTOR_COUNT] = {
-    [MOTOR_ALIMENTACAO] = GPIO_NUM_2,
-    [MOTOR_ESTEIRA] = GPIO_NUM_19,
+    [MOTOR_ALIMENTACAO] = GPIO_NUM_4,
+    [MOTOR_ESTEIRA] = GPIO_NUM_2,
 };
 
 void Motor_Init(void)
@@ -19,6 +19,7 @@ void Aciona_Motor(MotorID id, float potencia)
 {
     if (potencia > 0)
     {
+        potencia = map(potencia, 0, 100, 0, 255);
         int valor_pwm = 0;
 
         for (valor_pwm = 0; valor_pwm < potencia; valor_pwm++)

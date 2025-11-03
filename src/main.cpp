@@ -1,6 +1,7 @@
 #include <Arduino.h>
 #include "tasks/task_alimentacao.h"
 #include "tasks/task_leitura.h"
+#include "tasks/task_envase.h"
 #include "drivers/servo_driver.h"
 #include "drivers/ponteh_driver.h"
 
@@ -15,8 +16,9 @@ void setup()
 {
   Motor_Init();
   Servo_Init();
-  TaskAlimentacao_Init();
   TaskSensores_Init();
+  TaskAlimentacao_Init();
+  TaskEnvase_Init();
 }
 
 void loop()

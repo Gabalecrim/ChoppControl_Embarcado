@@ -21,7 +21,7 @@ void task_alimentacao(void *pvParameters)
             if (sensores->botao_ciclo)
             {
                 Serial.println("Alimentacao ligada");
-                Aciona_Motor(MOTOR_ALIMENTACAO, 255);
+                Aciona_Motor(MOTOR_ALIMENTACAO, 100);
             }
             else
             {

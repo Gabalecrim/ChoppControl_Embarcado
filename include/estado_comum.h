@@ -29,4 +29,6 @@ extern SemaphoreHandle_t xSemEsteira;
 extern SemaphoreHandle_t xSemRecrave;
 extern SemaphoreHandle_t xMutexSensores;
 
+extern TickType_t tempo_inicio_envase;
+
 #endif

@@ -2,11 +2,11 @@
 #include <Arduino.h>
 
 static const gpio_num_t sensor_pins[SENSOR_COUNT] = {
-    [SENSOR_SAIDA_ALIMENTACAO] = GPIO_NUM_4,
-    [SENSOR_CHEGADA_ENVASE] = GPIO_NUM_21,
-    [SENSOR_PASSAGEM_TAMPA] = GPIO_NUM_6,
-    [SENSOR_FINAL_ESTEIRA] = GPIO_NUM_17,
-    [SENSOR_CHEGADA_GUIA_RECRAVE] = GPIO_NUM_16,
+    [SENSOR_SAIDA_ALIMENTACAO] = GPIO_NUM_27,
+    [SENSOR_CHEGADA_ENVASE] = GPIO_NUM_13,
+    [SENSOR_PASSAGEM_TAMPA] = GPIO_NUM_15,
+    [SENSOR_FINAL_ESTEIRA] = GPIO_NUM_22,
+    [SENSOR_CHEGADA_GUIA_RECRAVE] = GPIO_NUM_23,
 };
 
 void Sensor_Init(void)
@@ -19,14 +19,5 @@ void Sensor_Init(void)
 
 bool Leitura_Sensor(SensorID id)
 {
-
-    // if (digitalRead(sensor_pins[id]) == LOW)
-    // {
-    //     Serial.println("Sensor ativo");
-    // }
-    // else
-    // {
-    //     Serial.println("Sensor inativo");
-    // }
-    return digitalRead(sensor_pins[id]);
+    return !digitalRead(sensor_pins[id]);
 }
