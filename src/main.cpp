@@ -4,6 +4,7 @@
 #include "tasks/task_envase.h"
 #include "drivers/servo_driver.h"
 #include "drivers/ponteh_driver.h"
+#include "drivers/led_driver.h"
 
 char slot;
 unsigned long tempo = 0;
@@ -14,6 +15,7 @@ void AguardaTimer();
 
 void setup()
 {
+  Led_Init();
   Motor_Init();
   Servo_Init();
   TaskSensores_Init();

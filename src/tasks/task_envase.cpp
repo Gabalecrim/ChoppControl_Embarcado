@@ -4,6 +4,7 @@
 #include <freertos/semphr.h>
 #include <freertos/task.h>
 #include "drivers/ponteh_driver.h"
+#include "drivers/led_driver.h"
 
 static EstadoEnvase_t estado_envase;
 
@@ -28,6 +29,7 @@ void task_envase(void *pvParameters)
                     if (sensores->chegada_envase)
                     {
                         Aciona_Motor(MOTOR_ESTEIRA, 0);
+                        Aciona_Led(LED_ENVASE, true);
                         tempo_inicio_envase = xTaskGetTickCount();
                         estado_envase = ENVASANDO;
                     }
@@ -39,6 +41,7 @@ void task_envase(void *pvParameters)
                         break;
                     tempo_inicio_envase = 0;
                     Aciona_Motor(MOTOR_ESTEIRA, 100);
+                    Aciona_Led(LED_ENVASE, false);
                     estado_envase = AGUARDANDO_LATA;
                     vTaskDelay(3000 / portTICK_PERIOD_MS);
                     break;
