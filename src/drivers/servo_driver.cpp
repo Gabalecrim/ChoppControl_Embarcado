@@ -2,7 +2,7 @@
 #include <Arduino.h>
 
 static const gpio_num_t servo_pin[SERVO_COUNT] = {
-    [ATUADOR_FINAL_ESTEIRA] = GPIO_NUM_2,
+    [ATUADOR_FINAL_ESTEIRA] = GPIO_NUM_32,
     [ATUADOR_GUIA_RECRAVE] = GPIO_NUM_5,
 };
 

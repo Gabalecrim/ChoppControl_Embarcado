@@ -25,7 +25,7 @@ typedef struct
 extern SemaphoreHandle_t xSemAlimentacao;
 extern SemaphoreHandle_t xSemEnvase;
 extern SemaphoreHandle_t xSemTampa;
-extern SemaphoreHandle_t xSemEsteira;
+extern SemaphoreHandle_t xSemFimEsteira;
 extern SemaphoreHandle_t xSemRecrave;
 extern SemaphoreHandle_t xMutexSensores;
 

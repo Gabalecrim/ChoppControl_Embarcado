@@ -10,6 +10,9 @@ static EstadoSensor_t ultima_leitura;
 
 SemaphoreHandle_t xSemAlimentacao;
 SemaphoreHandle_t xSemEnvase;
+SemaphoreHandle_t xSemTampa;
+SemaphoreHandle_t xSemFimEsteira;
+SemaphoreHandle_t xSemRecrave;
 
 TickType_t tempo_inicio_envase;
 
@@ -18,6 +21,9 @@ void TaskSensores_Init(void)
     // xMutexSensores = xSemaphoreCreateMutex();
     xSemAlimentacao = xSemaphoreCreateBinary();
     xSemEnvase = xSemaphoreCreateBinary();
+    xSemTampa = xSemaphoreCreateBinary();
+    xSemFimEsteira = xSemaphoreCreateBinary();
+    xSemRecrave = xSemaphoreCreateBinary();
     xTaskCreatePinnedToCore(TaskSensores, "Sensores", 2048, NULL, 5, NULL, 1);
 }
 
@@ -45,6 +51,17 @@ void TaskSensores(void *pvParameters)
         }
         ultima_leitura.chegada_envase = estado_leitura.chegada_envase;
 
+        if (estado_leitura.passagem_tampa && !ultima_leitura.passagem_tampa)
+        {
+            xSemaphoreGive(xSemTampa);
+        }
+
+        if (estado_leitura.final_esteira && !ultima_leitura.passagem_tampa && estado_leitura.chegada_guia_recrave)
+        {
+            xSemaphoreGive(xSemRecrave);
+        }
+
+        // Semaforo por tempo
         if (tempo_inicio_envase != 0)
         {
             if (xTaskGetTickCount() - tempo_inicio_envase > 5000 / portTICK_PERIOD_MS)

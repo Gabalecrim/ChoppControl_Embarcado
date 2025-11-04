@@ -2,6 +2,8 @@
 #include "tasks/task_alimentacao.h"
 #include "tasks/task_leitura.h"
 #include "tasks/task_envase.h"
+#include "tasks/task_tampa.h"
+#include "tasks/task_recrave.h"
 #include "drivers/servo_driver.h"
 #include "drivers/ponteh_driver.h"
 #include "drivers/led_driver.h"
@@ -21,6 +23,8 @@ void setup()
   TaskSensores_Init();
   TaskAlimentacao_Init();
   TaskEnvase_Init();
+  Task_Tampa_Init();
+  TaskRecrave_Init();
 }
 
 void loop()
