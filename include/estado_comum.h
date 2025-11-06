@@ -22,6 +22,26 @@ typedef struct
     bool botao_ciclo;
 } EstadoSensor_t;
 
+typedef enum
+{
+    AGUARDANDOENVASE,
+    ENVASANDO,
+    AGUARDANDOTAMPA,
+    TAMPANDO,
+    AGUADANDORECRAVE,
+    RECRAVANDO,
+    FINALIZADA,
+} EstadoLatas_t;
+
+typedef struct
+{
+    uint32_t id;
+    EstadoLatas_t etapa;
+    TickType_t tempoEntrada;
+    TickType_t tempoSaida;
+    bool completa;
+} Lata_t;
+
 extern SemaphoreHandle_t xSemAlimentacao;
 extern SemaphoreHandle_t xSemEnvase;
 extern SemaphoreHandle_t xSemTampa;

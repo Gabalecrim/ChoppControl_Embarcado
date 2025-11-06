@@ -38,6 +38,7 @@ void TaskSensores(void *pvParameters)
         estado_leitura.chegada_guia_recrave = Leitura_Sensor(SENSOR_CHEGADA_GUIA_RECRAVE);
         estado_leitura.botao_ciclo = Leitura_Botao(BOTAO_START);
 
+        // Semaforos de acionamento das tasks
         if (estado_leitura.botao_ciclo != ultima_leitura.botao_ciclo)
         {
             xSemaphoreGive(xSemAlimentacao);
