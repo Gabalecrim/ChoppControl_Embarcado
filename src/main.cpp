@@ -4,6 +4,7 @@
 #include "tasks/task_envase.h"
 #include "tasks/task_tampa.h"
 #include "tasks/task_recrave.h"
+#include "tasks/task_mqtt.h"
 #include "drivers/servo_driver.h"
 #include "drivers/ponteh_driver.h"
 #include "drivers/led_driver.h"
@@ -17,6 +18,10 @@ void AguardaTimer();
 
 void setup()
 {
+  Serial.begin(115200);
+  delay(1000);
+  Serial.println("[SISTEMA] Iniciando ChoppControl...");
+  
   Led_Init();
   Motor_Init();
   Servo_Init();
@@ -25,6 +30,9 @@ void setup()
   TaskEnvase_Init();
   Task_Tampa_Init();
   TaskRecrave_Init();
+  TaskMQTT_Init();
+  
+  Serial.println("[SISTEMA] Sistema iniciado!");
 }
 
 void loop()
