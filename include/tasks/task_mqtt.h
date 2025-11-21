@@ -1,39 +1,25 @@
+// ===== task_mqtt.h =====
 #ifndef TASK_MQTT_H
 #define TASK_MQTT_H
 
-#include <Arduino.h>
+#include <stdint.h>
+#include <stdbool.h>
 
-/**
- * @brief Inicializa a task MQTT
- * 
- * Cria a task que gerencia a conexão WiFi e MQTT,
- * e publica periodicamente os dados das latinhas
- */
-void TaskMQTT_Init();
+#ifdef __cplusplus
+extern "C"
+{
+#endif
 
-/**
- * @brief Verifica se está conectado ao WiFi
- * @return true se conectado, false caso contrário
- */
-bool TaskMQTT_IsWiFiConnected();
+    void TaskMQTT_Init();
+    bool TaskMQTT_IsWiFiConnected();
+    bool TaskMQTT_IsMQTTConnected();
 
-/**
- * @brief Verifica se está conectado ao broker MQTT
- * @return true se conectado, false caso contrário
- */
-bool TaskMQTT_IsMQTTConnected();
+    bool TaskMQTT_Send(const char *topic, const char *payload, bool retain = false);
 
-/**
- * @brief Publica mensagem em um tópico específico
- * @param topic Tópico MQTT
- * @param payload Dados a serem publicados
- * @return true se publicado com sucesso, false caso contrário
- */
-bool TaskMQTT_Publish(const char* topic, const char* payload);
+    void TaskMQTT_PublishNow();
 
-/**
- * @brief Força a publicação imediata dos dados das latinhas
- */
-void TaskMQTT_PublishNow();
+#ifdef __cplusplus
+}
+#endif
 
 #endif

@@ -21,7 +21,7 @@ void setup()
   Serial.begin(115200);
   delay(1000);
   Serial.println("[SISTEMA] Iniciando ChoppControl...");
-  
+
   Led_Init();
   Motor_Init();
   Servo_Init();
@@ -31,7 +31,7 @@ void setup()
   Task_Tampa_Init();
   TaskRecrave_Init();
   TaskMQTT_Init();
-  
+
   Serial.println("[SISTEMA] Sistema iniciado!");
 }
 

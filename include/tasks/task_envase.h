@@ -6,7 +6,7 @@
 typedef enum
 {
     AGUARDANDO_LATA,
-    ENVASANDO,
+    ENVASE,
 } EstadoEnvase_t;
 
 void TaskEnvase_Init(void);

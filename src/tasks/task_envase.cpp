@@ -31,7 +31,7 @@ void task_envase(void *pvParameters)
                         Aciona_Motor(MOTOR_ESTEIRA, 0);
                         Aciona_Led(LED_ENVASE, true);
                         tempo_inicio_envase = xTaskGetTickCount();
-                        estado_envase = ENVASANDO;
+                        estado_envase = ENVASE;
                     }
                     else
                         Aciona_Motor(MOTOR_ESTEIRA, 100);
